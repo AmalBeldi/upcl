@@ -96,10 +96,29 @@ python experiments/scalability_analysis.py --k-vars 6 --domain-size 4
 ## Extending to a real dataset (Section 7.1)
 
 This repository does not redistribute any dataset. To run the full
-protocol on a real context-aware recommendation benchmark (e.g.
-LDOS-CoMoDa, Frappe):
+protocol on a real context-aware recommendation benchmark:
 
-1. Download the benchmark from its official source.
+### Option A — Frappe (recommended: easiest to obtain)
+
+1. Download the raw Frappe archive (Baltrunas et al., 2015) from its
+   official/academic source and unzip it; you should get a tab-separated
+   `frappe.csv`.
+2. Place it at `data/frappe.csv`.
+3. Convert it to the tidy schema:
+   ```bash
+   python experiments/prepare_frappe_dataset.py \
+       --raw-path data/frappe.csv --out-path data/frappe_tidy.csv
+   ```
+4. Run the pipeline:
+   ```bash
+   python experiments/real_dataset_pipeline.py \
+       --preset frappe --data-path data/frappe_tidy.csv
+   ```
+
+### Option B — LDOS-CoMoDa or any other CARS benchmark
+
+1. Download the benchmark from its official source (LDOS-CoMoDa requires
+   requesting access from its maintainers at the University of Ljubljana).
 2. Convert it to the tidy CSV schema documented in
    `upcl/datasets/loaders.py` (one row per interaction; context columns
    may be a plain categorical value or a JSON-encoded probability
@@ -110,9 +129,12 @@ LDOS-CoMoDa, Frappe):
    python experiments/real_dataset_pipeline.py \
        --preset ldos_comoda --data-path data/ldos_comoda.csv
    ```
-5. Replace the placeholder popularity-based `f0` and identity adjustment
-   `h` in `real_dataset_pipeline.py` with a trained recommender and a
-   learned contextual adjustment function for a non-trivial evaluation.
+
+### In both cases
+
+Replace the placeholder popularity-based `f0` and identity adjustment `h`
+in `real_dataset_pipeline.py` with a trained recommender and a learned
+contextual adjustment function for a non-trivial evaluation.
 
 ## Status
 
