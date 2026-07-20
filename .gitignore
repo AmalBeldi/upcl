@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+build/
+dist/
+
+# Local datasets (never commit real data files here)
+data/*.csv
+data/*.tsv
+data/*.parquet
+!data/.gitkeep
