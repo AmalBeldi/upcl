@@ -1,0 +1,13 @@
+CVaR beta sensitivity (mean realized +- std, 5th pct +- std over 5 seeds):
+  beta=0.5: mean=3.475+-0.011, 5th pct=2.535+-0.027
+  beta=0.6: mean=3.425+-0.025, 5th pct=2.552+-0.024
+  beta=0.7: mean=3.382+-0.027, 5th pct=2.553+-0.018
+  beta=0.8: mean=3.337+-0.025, 5th pct=2.554+-0.013
+  beta=0.9: mean=3.281+-0.022, 5th pct=2.550+-0.017
+
+DRO rho sensitivity (mean realized +- std, 5th pct +- std over 5 seeds):
+  rho=0.1: mean=3.540+-0.026, 5th pct=2.466+-0.033
+  rho=0.2: mean=3.507+-0.023, 5th pct=2.514+-0.032
+  rho=0.3: mean=3.473+-0.023, 5th pct=2.538+-0.012
+  rho=0.5: mean=3.420+-0.021, 5th pct=2.554+-0.017
+  rho=1.0: mean=3.331+-0.026, 5th pct=2.555+-0.016
