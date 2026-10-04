@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "n_users": 957,
+    "n_items": 4082,
+    "n_worlds": 2,
+    "n_rows": 288609,
+    "context_col": "isweekend",
+    "n_seeds": 10,
+    "n_factors": 10
+  },
+  "results": {
+    "0.0": {
+      "model_mean": 0.1446960806653281,
+      "model_std": 0.005583474323902232,
+      "deterministic_mean": 0.1446960806653281,
+      "deterministic_std": 0.005583474323902232,
+      "noncontextual_mean": 0.17957020417199182,
+      "noncontextual_std": 0.010526022781316521,
+      "cohens_d_vs_det": 0.0,
+      "cohens_d_vs_nc": -5.555908845762456,
+      "p_vs_det": 1.0,
+      "p_vs_nc": 2.837948602544759e-08,
+      "holm_significant_vs_det": false,
+      "holm_significant_vs_nc": true
+    },
+    "0.25": {
+      "model_mean": 0.14669684336140634,
+      "model_std": 0.004641350135524141,
+      "deterministic_mean": 0.1446960806653281,
+      "deterministic_std": 0.005583474323902232,
+      "noncontextual_mean": 0.17957020417199182,
+      "noncontextual_std": 0.010526022781316521,
+      "cohens_d_vs_det": 1.0335588950305954,
+      "cohens_d_vs_nc": -4.846072868581047,
+      "p_vs_det": 0.009707505173072565,
+      "p_vs_nc": 9.36544837899556e-08,
+      "holm_significant_vs_det": true,
+      "holm_significant_vs_nc": true
+    },
+    "0.5": {
+      "model_mean": 0.14713161303147074,
+      "model_std": 0.004650655940116638,
+      "deterministic_mean": 0.1446960806653281,
+      "deterministic_std": 0.005583474323902232,
+      "noncontextual_mean": 0.17957020417199182,
+      "noncontextual_std": 0.010526022781316521,
+      "cohens_d_vs_det": 0.8623863202142286,
+      "cohens_d_vs_nc": -5.089720890735205,
+      "p_vs_det": 0.023334845281257382,
+      "p_vs_nc": 6.108490815043037e-08,
+      "holm_significant_vs_det": false,
+      "holm_significant_vs_nc": true
+    },
+    "0.75": {
+      "model_mean": 0.14694727780973343,
+      "model_std": 0.005539682590791589,
+      "deterministic_mean": 0.1446960806653281,
+      "deterministic_std": 0.005583474323902232,
+      "noncontextual_mean": 0.17957020417199182,
+      "noncontextual_std": 0.010526022781316521,
+      "cohens_d_vs_det": 0.6730676145087522,
+      "cohens_d_vs_nc": -5.802968986906081,
+      "p_vs_det": 0.062180292314982476,
+      "p_vs_nc": 1.9370886354621334e-08,
+      "holm_significant_vs_det": false,
+      "holm_significant_vs_nc": true
+    },
+    "1.0": {
+      "model_mean": 0.14550034482833124,
+      "model_std": 0.007207048316480544,
+      "deterministic_mean": 0.13200107672019215,
+      "deterministic_std": 0.017502092200525565,
+      "noncontextual_mean": 0.17957020417199182,
+      "noncontextual_std": 0.010526022781316521,
+      "cohens_d_vs_det": 1.0910488758191972,
+      "cohens_d_vs_nc": -7.456032241985511,
+      "p_vs_det": 0.00727242246889973,
+      "p_vs_nc": 2.117216013216889e-09,
+      "holm_significant_vs_det": true,
+      "holm_significant_vs_nc": true
+    }
+  }
+}

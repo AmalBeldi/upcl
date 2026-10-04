@@ -1,0 +1,130 @@
+{
+  "data": "../data/depaulmovie_tidy_clean.csv",
+  "context_cols": [
+    "Time",
+    "Location",
+    "Companion"
+  ],
+  "n_seeds": 10,
+  "lambda": 0.3,
+  "n_factors_grid": [
+    5,
+    10,
+    20
+  ],
+  "shrink_k_grid": [
+    1,
+    5,
+    20
+  ],
+  "rows": [
+    {
+      "n_factors": 5,
+      "shrink_k": 1,
+      "upcl_post_mean": 0.0803810089529711,
+      "upcl_post_std": 0.0068028085092957,
+      "deterministic_mean": 0.07831235541070411,
+      "deterministic_std": 0.006968368650116182,
+      "cohens_d": 0.8107722338405516,
+      "p_value": 0.030492063921890526,
+      "holm_significant": true,
+      "holm_significant_grid": false
+    },
+    {
+      "n_factors": 5,
+      "shrink_k": 5,
+      "upcl_post_mean": 0.08228468803092581,
+      "upcl_post_std": 0.007140939968544704,
+      "deterministic_mean": 0.08106312353582336,
+      "deterministic_std": 0.006832099228281683,
+      "cohens_d": 0.6218352590235242,
+      "p_value": 0.08080660734147188,
+      "holm_significant": false,
+      "holm_significant_grid": false
+    },
+    {
+      "n_factors": 5,
+      "shrink_k": 20,
+      "upcl_post_mean": 0.08261177050295501,
+      "upcl_post_std": 0.006943856296562448,
+      "deterministic_mean": 0.08238700589296417,
+      "deterministic_std": 0.00647520005969922,
+      "cohens_d": 0.1887380111583243,
+      "p_value": 0.5653225136316656,
+      "holm_significant": false,
+      "holm_significant_grid": false
+    },
+    {
+      "n_factors": 10,
+      "shrink_k": 1,
+      "upcl_post_mean": 0.08702277633047908,
+      "upcl_post_std": 0.007156392678828242,
+      "deterministic_mean": 0.08508384952055852,
+      "deterministic_std": 0.006043180908381469,
+      "cohens_d": 0.8772475043180138,
+      "p_value": 0.021608169265680374,
+      "holm_significant": true,
+      "holm_significant_grid": false
+    },
+    {
+      "n_factors": 10,
+      "shrink_k": 5,
+      "upcl_post_mean": 0.08678805199066432,
+      "upcl_post_std": 0.007368565797092905,
+      "deterministic_mean": 0.08686320518867521,
+      "deterministic_std": 0.006326106076869545,
+      "cohens_d": -0.03403841652018107,
+      "p_value": 0.9166434971269298,
+      "holm_significant": false,
+      "holm_significant_grid": false
+    },
+    {
+      "n_factors": 10,
+      "shrink_k": 20,
+      "upcl_post_mean": 0.08739277799513986,
+      "upcl_post_std": 0.0070882337123243655,
+      "deterministic_mean": 0.08743047933497193,
+      "deterministic_std": 0.007294633274851467,
+      "cohens_d": -0.06587811076653942,
+      "p_value": 0.8396135244519872,
+      "holm_significant": false,
+      "holm_significant_grid": false
+    },
+    {
+      "n_factors": 20,
+      "shrink_k": 1,
+      "upcl_post_mean": 0.09567582548113035,
+      "upcl_post_std": 0.007951554242232633,
+      "deterministic_mean": 0.09310819285717808,
+      "deterministic_std": 0.00846817183039159,
+      "cohens_d": 1.733848480256361,
+      "p_value": 0.00038869467464202565,
+      "holm_significant": true,
+      "holm_significant_grid": true
+    },
+    {
+      "n_factors": 20,
+      "shrink_k": 5,
+      "upcl_post_mean": 0.09657962017500749,
+      "upcl_post_std": 0.006606482213062282,
+      "deterministic_mean": 0.0951347296023192,
+      "deterministic_std": 0.007127706625327741,
+      "cohens_d": 0.8969622038377439,
+      "p_value": 0.0195160923042944,
+      "holm_significant": true,
+      "holm_significant_grid": false
+    },
+    {
+      "n_factors": 20,
+      "shrink_k": 20,
+      "upcl_post_mean": 0.09767501824929745,
+      "upcl_post_std": 0.006060200805215093,
+      "deterministic_mean": 0.0969588324246074,
+      "deterministic_std": 0.006196891963101321,
+      "cohens_d": 0.5465742974327007,
+      "p_value": 0.11797728259448109,
+      "holm_significant": false,
+      "holm_significant_grid": false
+    }
+  ]
+}

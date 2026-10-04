@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "n_users": 121,
+    "n_items": 1232,
+    "n_rows": 2252,
+    "context_cols": [
+      "mood"
+    ],
+    "policy": "eu",
+    "granularity": "item",
+    "n_factors": 10,
+    "shrink_k": 5
+  },
+  "results": {
+    "0.0": {
+      "upcl_post_mean": 0.007079907388586683,
+      "upcl_post_std": 0.0012045040376547278,
+      "deterministic_mean": 0.007079907388586683,
+      "deterministic_std": 0.0012045040376547278,
+      "cohens_d": 0.0,
+      "p_value": 1.0,
+      "holm_significant": false
+    },
+    "0.25": {
+      "upcl_post_mean": 0.007141447618357312,
+      "upcl_post_std": 0.001253165362157527,
+      "deterministic_mean": 0.007079907388586683,
+      "deterministic_std": 0.0012045040376547278,
+      "cohens_d": 0.4217027342060703,
+      "p_value": 0.2151187868509997,
+      "holm_significant": false
+    },
+    "0.5": {
+      "upcl_post_mean": 0.00728491491744887,
+      "upcl_post_std": 0.0013614192202537232,
+      "deterministic_mean": 0.007079907388586683,
+      "deterministic_std": 0.0012045040376547278,
+      "cohens_d": 0.5902525011735363,
+      "p_value": 0.09481981258862716,
+      "holm_significant": false
+    },
+    "0.75": {
+      "upcl_post_mean": 0.007436429005678628,
+      "upcl_post_std": 0.0015029732921756087,
+      "deterministic_mean": 0.007079907388586683,
+      "deterministic_std": 0.0012045040376547278,
+      "cohens_d": 0.6325317604069257,
+      "p_value": 0.07652307748791497,
+      "holm_significant": false
+    },
+    "1.0": {
+      "upcl_post_mean": 0.007760673992866557,
+      "upcl_post_std": 0.0017419717290722524,
+      "deterministic_mean": 0.007659068395997215,
+      "deterministic_std": 0.0019153037409755287,
+      "cohens_d": 0.16907705013998933,
+      "p_value": 0.605833795170647,
+      "holm_significant": false
+    }
+  }
+}
