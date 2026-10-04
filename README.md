@@ -50,10 +50,6 @@ experiments/
   frappe_model_evaluation.py        UPCL-Model (jointly-trained contextual bias) on Frappe
   mf_shrink_ablation.py             Sensitivity of the DePaulMovie result to MF capacity
                                      and residual shrinkage
-  real_dataset_pipeline.py          Earlier, dataset-agnostic scaffold (generic preset
-                                     runner, placeholder f0/h) -- superseded by the
-                                     scripts above for every real-dataset number reported
-                                     in the paper, kept here as a simpler starting point
 
 outputs/                      Frozen result logs (JSON/txt) backing every reported
                                real-dataset and RQ4 number, so nothing needs to be
@@ -156,11 +152,6 @@ from scratch given the raw benchmark.
    # MF-capacity / shrinkage sensitivity ablation, DePaulMovie
    python mf_shrink_ablation.py
    ```
-
-`experiments/real_dataset_pipeline.py` is an earlier, dataset-agnostic
-scaffold (generic `--preset` runner with a placeholder popularity-based
-`f0` and identity adjustment) kept for a simpler starting point; it is
-not what produced any number reported in the paper.
 
 ## Status
 
