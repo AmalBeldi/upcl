@@ -1,0 +1,33 @@
+=== RQ1: decision quality at lambda=0.3 (n=100 agents) ===
+ non_contextual: NDCG@5 = 0.7743 +/- 0.0919
+  deterministic: NDCG@5 = 0.9398 +/- 0.0418
+       upcl_pre: NDCG@5 = 0.9968 +/- 0.0044
+      upcl_post: NDCG@5 = 0.9968 +/- 0.0044
+UPCL-Pre vs non_contextual: d=+2.400, p=4.67e-43
+UPCL-Pre vs deterministic: d=+1.328, p=1.02e-23
+UPCL-Post vs upcl_pre: d=+0.000, p=nan (exact-reproduction h_eta)
+
+=== RQ3: UPCL-Pre vs UPCL-Post, call cost ===
+UPCL-Pre:  10800 worldwise() calls
+UPCL-Post: 1200 base() calls + 10800 adjustment calls (adjustment here *is* worldwise(), by the exact-reproduction construction above; a true black-box h_eta would replace this with a cheap lookup)
+
+=== RQ2: robustness to state uncertainty (3 seeds) ===
+lambda=0.00: UPCL-Pre=1.0000, Deterministic=0.9398, d=+1.439, p=5.33e-26
+lambda=0.25: UPCL-Pre=0.9977, Deterministic=0.9398, d=+1.358, p=2.44e-24
+lambda=0.50: UPCL-Pre=0.9886, Deterministic=0.9398, d=+1.083, p=1.71e-18
+lambda=0.75: UPCL-Pre=0.9735, Deterministic=0.9398, d=+0.663, p=1.76e-09
+lambda=1.00: UPCL-Pre=0.9514, Deterministic=0.9243, d=+0.338, p=0.00104
+
+=== RQ5: Monte Carlo approximation quality (K=6, domain size 4) ===
+|Omega|=4096, required N for eps=0.05, delta=0.05: 18445
+N=18445: mean |error| over 20 draws = 0.0090 (Hoeffding bound=0.0500), true=2.5356
+N=36890: mean |error| over 20 draws = 0.0062 (Hoeffding bound=0.0012), true=2.5356
+
+=== RQ6: scalability, exact enumeration vs. Monte Carlo (N=2000) ===
+K= 2 (|Omega|=       16): exact=0.10 ms, MC(N=2000)=0.09 ms
+K= 4 (|Omega|=      256): exact=1.06 ms, MC(N=2000)=0.21 ms
+K= 6 (|Omega|=     4096): exact=20.45 ms, MC(N=2000)=0.58 ms
+K= 8 (|Omega|=    65536): exact=445.26 ms, MC(N=2000)=3.70 ms
+K=10 (|Omega|=  1048576): exact=9318.42 ms, MC(N=2000)=54.56 ms
+
+Log written to /home/claude/upcl/outputs/full_evaluation_log.txt

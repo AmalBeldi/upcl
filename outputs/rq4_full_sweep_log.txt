@@ -18,3 +18,9 @@ Paired comparisons vs. Bayesian-LCB (pooled across seeds, n=2500):
   Hurwicz_0.5  vs LCB: d=+0.052, p=0.00972
   CVaR         vs LCB: d=-0.114, p=1.24e-08
   DRO          vs LCB: d=+0.120, p=2.22e-09
+
+Paired comparisons vs. Bayesian-LCB (per-seed mean / per-seed 5th-pct ``worst-case'', n=5 seeds -- this is what the main paper's RQ4 paragraph reports):
+  EU           mean vs LCB: d=+7.266, p=8.4e-05   |   worst-case (5th pct) vs LCB: d=-4.109, p=0.00078
+  Hurwicz_0.5  mean vs LCB: d=+1.278, p=0.0461   |   worst-case (5th pct) vs LCB: d=-7.922, p=5.97e-05
+  CVaR         mean vs LCB: d=-4.963, p=0.000375   |   worst-case (5th pct) vs LCB: d=-0.030, p=0.95
+  DRO          mean vs LCB: d=+3.908, p=0.000945   |   worst-case (5th pct) vs LCB: d=-0.744, p=0.172

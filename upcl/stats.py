@@ -51,6 +51,33 @@ def paired_ttest(method_a: Sequence[float], method_b: Sequence[float]) -> Signif
     )
 
 
+def cohens_d_paired(method_a: Sequence[float], method_b: Sequence[float]) -> float:
+    """Paired Cohen's d: mean paired difference over the std of that
+    difference (ddof=1). Used throughout Section 7.3/8 and Appendix B
+    alongside `paired_ttest` and `holm_bonferroni`.
+    """
+    diff = np.asarray(method_a, dtype=float) - np.asarray(method_b, dtype=float)
+    sd = diff.std(ddof=1)
+    return float(diff.mean() / sd) if sd > 0 else 0.0
+
+
+def holm_bonferroni(p_values: Sequence[float], alpha: float = 0.05) -> list:
+    """Holm-Bonferroni step-down correction across a family of `m`
+    simultaneous tests (Section 7.3): rejects in order of increasing
+    p-value using the shrinking threshold alpha/(m-rank), stopping at the
+    first failure. Returns one bool per input p-value, same order as given.
+    """
+    order = np.argsort(p_values)
+    m = len(p_values)
+    significant = [False] * m
+    for rank, idx in enumerate(order):
+        if p_values[idx] <= alpha / (m - rank):
+            significant[idx] = True
+        else:
+            break
+    return significant
+
+
 def wilcoxon_signed_rank(method_a: Sequence[float], method_b: Sequence[float]) -> SignificanceResult:
     """Non-parametric alternative to the paired t-test, recommended when
     per-user metric differences are not approximately normal.

@@ -1,0 +1,12 @@
+=== RQ1 family (m=4, lambda=0.3): UPCL-Pre/UPCL-Post vs. baselines ===
+     UPCL-Pre vs. non-contextual: d=+2.400, p=4.67e-43, Holm-sig=True
+      UPCL-Pre vs. deterministic: d=+1.328, p=1.02e-23, Holm-sig=True
+    UPCL-Post vs. non-contextual: d=+2.400, p=4.67e-43, Holm-sig=True
+     UPCL-Post vs. deterministic: d=+1.328, p=1.02e-23, Holm-sig=True
+
+=== RQ2 family (m=5 noise levels): UPCL-Pre vs. deterministic ===
+lambda=0.00: d=+1.439, p=5.33e-26, Holm-sig=True
+lambda=0.25: d=+1.358, p=2.44e-24, Holm-sig=True
+lambda=0.50: d=+1.083, p=1.71e-18, Holm-sig=True
+lambda=0.75: d=+0.663, p=1.76e-09, Holm-sig=True
+lambda=1.00: d=+0.338, p=0.00104, Holm-sig=True

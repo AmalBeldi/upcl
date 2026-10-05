@@ -39,7 +39,16 @@ upcl/                       Core library (importable, no dataset required)
 experiments/
   example_alice.py                  Reproduces the paper's running example exactly
   synthetic_benchmark.py            Noise-robustness benchmark + significance tests
+                                     (structural demo, smaller population than the paper)
+  full_evaluation.py                RQ1-RQ3 and RQ5-RQ6 on the exact 100-user/12-item
+                                     synthetic testbed used for Table 1 and Section 8
+  rigor_and_baseline.py             Paired Cohen's d / Holm-Bonferroni table for RQ1/RQ2
+                                     (imports full_evaluation.py's population/scores)
+  upcl_model_evaluation.py          UPCL-Model on the structured synthetic testbed
+                                     (Appendix B.1.3)
   scalability_analysis.py           Monte Carlo convergence, Corollary 5 check
+                                     (structural demo; full_evaluation.py has the
+                                     exact RQ5/RQ6 numbers reported in the paper)
   rq4_full_sweep.py                 RQ4 risk-sensitive aggregation, multi-seed
   rq4_hyperparam_sensitivity.py     CVaR/DRO hyperparameter sensitivity ablation
   prepare_real_dataset.py           Tidy-CSV preparation for any real CARS benchmark
@@ -78,6 +87,9 @@ run_tests.py                  Dependency-free fallback runner (see below)
 | Section 7.2 (noise injection) | `upcl/noise.py` |
 | Section 7.3 (significance testing) | `upcl/stats.py` |
 | Section 7.1 (dataset loading) | `upcl/datasets/loaders.py` |
+| RQ1-RQ3, RQ5-RQ6 (Table 1, Section 8) | `experiments/full_evaluation.py` |
+| RQ1/RQ2 statistical rigor table | `experiments/rigor_and_baseline.py` |
+| UPCL-Model, synthetic structured testbed | `experiments/upcl_model_evaluation.py` |
 | RQ4 -- risk-sensitive aggregation | `experiments/rq4_full_sweep.py`, `experiments/rq4_hyperparam_sensitivity.py` |
 | Real-dataset results -- DePaulMovie, LDOS-CoMoDa | `experiments/real_dataset_multiseed.py` |
 | Real-dataset results -- Frappe (UPCL-Post) | `experiments/real_dataset_multiseed_fast.py` |
@@ -104,10 +116,17 @@ python run_tests.py
 # Reproduce the paper's worked example exactly
 python experiments/example_alice.py
 
-# Synthetic robustness benchmark under controlled contextual noise
-python experiments/synthetic_benchmark.py --n-users 50 --n-items 20
+# RQ1-RQ3 and RQ5-RQ6 on the exact synthetic testbed behind Table 1 (main paper)
+python experiments/full_evaluation.py
 
-# Monte Carlo scalability analysis (Section 7.4 / Corollary 5)
+# Statistical rigor table (Cohen's d / Holm-Bonferroni) for RQ1/RQ2
+python experiments/rigor_and_baseline.py
+
+# UPCL-Model on the structured synthetic testbed (Appendix B.1.3)
+python experiments/upcl_model_evaluation.py
+
+# Smaller structural demos of the same protocol, at adjustable scale
+python experiments/synthetic_benchmark.py --n-users 50 --n-items 20
 python experiments/scalability_analysis.py --k-vars 6 --domain-size 4
 ```
 

@@ -1,0 +1,14 @@
+Fitting f_phi (SGD, 60 epochs) on realized interactions at lambda=0.3 ...
+
+=== UPCL-Model: full noise sweep, NDCG@5 (structured testbed, 100 agents) ===
+lambda=0.00: non_ctx=0.9872, determ=0.9882, upcl_pre=1.0000, upcl_post=1.0000, upcl_model=0.9988
+lambda=0.25: non_ctx=0.9872, determ=0.9882, upcl_pre=0.9997, upcl_post=0.9997, upcl_model=0.9986
+lambda=0.30: non_ctx=0.9872, determ=0.9882, upcl_pre=0.9996, upcl_post=0.9996, upcl_model=0.9984
+lambda=0.50: non_ctx=0.9872, determ=0.9882, upcl_pre=0.9985, upcl_post=0.9985, upcl_model=0.9975
+lambda=0.75: non_ctx=0.9872, determ=0.9882, upcl_pre=0.9960, upcl_post=0.9960, upcl_model=0.9968
+lambda=1.00: non_ctx=0.9872, determ=0.9872, upcl_pre=0.9937, upcl_post=0.9937, upcl_model=0.9949
+
+=== At lambda=0.3: UPCL-Model vs. baselines ===
+UPCL-Model vs    non_ctx: d=+0.706, p=2.32e-10
+UPCL-Model vs     determ: d=+0.672, p=1.17e-09
+UPCL-Model vs   upcl_pre: d=-0.428, p=4.3e-05

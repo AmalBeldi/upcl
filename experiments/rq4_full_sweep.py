@@ -157,6 +157,30 @@ def main():
         d, pval = paired_stats(all_trials[p], all_trials["LCB"])
         print(f"  {p:<12} vs LCB: d={d:+.3f}, p={pval:.3g}")
 
+    # The main paper's RQ4 paragraph compares policies to Bayesian-LCB on
+    # the per-seed *mean* (does the policy win on average return?) and on
+    # the per-seed *5th percentile* (does it win on worst-case protection?)
+    # separately, each a paired test across the N_SEEDS=5 seeds -- a
+    # different, more relevant question than the pooled per-trial test
+    # above, which only asks whether realized utility differs trial-by-trial.
+    def paired_stats_per_seed(a, b):
+        a = np.asarray(a, dtype=float)
+        b = np.asarray(b, dtype=float)
+        diff = a - b
+        sd = diff.std(ddof=1)
+        d = float(diff.mean() / sd) if sd > 0 else 0.0
+        t, p = stats.ttest_rel(a, b)
+        return d, float(p)
+
+    print(f"\nPaired comparisons vs. Bayesian-LCB (per-seed mean / per-seed "
+          f"5th-pct ``worst-case'', n={N_SEEDS} seeds -- this is what the "
+          f"main paper's RQ4 paragraph reports):")
+    for p in ["EU", "Hurwicz_0.5", "CVaR", "DRO"]:
+        d_mean, p_mean = paired_stats_per_seed(per_seed[p]["mean"], per_seed["LCB"]["mean"])
+        d_p5, p_p5 = paired_stats_per_seed(per_seed[p]["p5"], per_seed["LCB"]["p5"])
+        print(f"  {p:<12} mean vs LCB: d={d_mean:+.3f}, p={p_mean:.3g}   |   "
+              f"worst-case (5th pct) vs LCB: d={d_p5:+.3f}, p={p_p5:.3g}")
+
     os.makedirs("outputs", exist_ok=True)
     with open("outputs/rq4_full_sweep_summary.json", "w") as f:
         json.dump(summary, f, indent=2)
