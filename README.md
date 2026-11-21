@@ -42,6 +42,8 @@ experiments/
                                      (structural demo, smaller population than the paper)
   full_evaluation.py                RQ1-RQ3 and RQ5-RQ6 on the exact 100-user/12-item
                                      synthetic testbed used for Table 1 and Section 8
+  external_baselines.py             UPCL vs. Thompson-style / credible-set / Bayesian-LCB decision
+                                     rules on realized utility (Appendix B.1.11)
   rigor_and_baseline.py             Paired Cohen's d / Holm-Bonferroni table for RQ1/RQ2
                                      (imports full_evaluation.py's population/scores)
   upcl_model_evaluation.py          UPCL-Model on the structured synthetic testbed
@@ -89,6 +91,7 @@ run_tests.py                  Dependency-free fallback runner (see below)
 | Section 7.1 (dataset loading) | `upcl/datasets/loaders.py` |
 | RQ1-RQ3, RQ5-RQ6 (Table 1, Section 8) | `experiments/full_evaluation.py` |
 | RQ1/RQ2 statistical rigor table | `experiments/rigor_and_baseline.py` |
+| Comparison with decision-rule baselines (Appendix B.1.11) | `experiments/external_baselines.py` |
 | UPCL-Model, synthetic structured testbed | `experiments/upcl_model_evaluation.py` |
 | RQ4 -- risk-sensitive aggregation | `experiments/rq4_full_sweep.py`, `experiments/rq4_hyperparam_sensitivity.py` |
 | Real-dataset results -- DePaulMovie, LDOS-CoMoDa | `experiments/real_dataset_multiseed.py` |
@@ -121,6 +124,9 @@ python experiments/full_evaluation.py
 
 # Statistical rigor table (Cohen's d / Holm-Bonferroni) for RQ1/RQ2
 python experiments/rigor_and_baseline.py
+
+# Comparison with uncertainty-aware decision rules (Appendix B.1.11)
+python experiments/external_baselines.py
 
 # UPCL-Model on the structured synthetic testbed (Appendix B.1.3)
 python experiments/upcl_model_evaluation.py

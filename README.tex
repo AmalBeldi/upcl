@@ -122,6 +122,7 @@ Running example & \code{example\_alice.py} & printed to console\\
 RQ1--RQ3, RQ5--RQ6 (synthetic) & \code{full\_evaluation.py} & \code{full\_evaluation\_log.txt}\\
 Statistical-rigor table (RQ1/RQ2) & \code{rigor\_and\_baseline.py} & \code{rigor\_and\_baseline\_log.txt}\\
 UPCL-Model, synthetic structured testbed & \code{upcl\_model\_evaluation.py} & \code{upcl\_model\_evaluation\_log.txt}\\
+Decision-rule baselines (Thompson-style, credible set, Bayesian LCB) & \code{external\_baselines.py} & \code{external\_baselines\_log.txt}\\
 RQ4 risk-sensitive aggregation & \code{rq4\_full\_sweep.py} & \code{rq4\_full\_sweep\_log.txt}\\
 CVaR/DRO hyperparameter ablation & \code{rq4\_hyperparam\_sensitivity.py} & \code{rq4\_hyperparam\_sensitivity\_log.txt}\\
 DePaulMovie, LDOS-CoMoDa (UPCL-Post) & \code{real\_dataset\_multiseed.py} & \code{depaulmovie\_*}, \code{ldos\_comoda\_*}\\
@@ -148,6 +149,7 @@ MF capacity / shrinkage ablation & \code{mf\_shrink\_ablation.py} & \code{mf\_sh
 Synthetic, decision quality ($\lambda=0.3$, 100 agents) & NDCG@5: non-contextual $0.774$, deterministic $0.940$, UPCL-Pre $0.997$; the gains are significant after Holm--Bonferroni correction (Cohen's $d=2.40$ and $1.33$)\\
 Synthetic, robustness & UPCL-Pre beats the deterministic baseline at every noise level; the effect size shrinks from $d=1.44$ ($\lambda=0$) to $d=0.34$ ($\lambda=1$) as both approach an uninformative belief\\
 Synthetic, risk--return (RQ4) & Expected Utility has the best mean and the worst 5th-percentile outcome; Maxmin, CVaR and DRO trade mean for a better worst case; the trade-off is continuous in the Hurwicz coefficient. Against a Bayesian-LCB baseline the picture is mixed: parity, not dominance\\
+Synthetic, vs.\ decision-rule baselines (realized utility) & UPCL with Expected Utility is significantly ahead on mean utility of Thompson-style, credible-set and Bayesian-LCB rules ($d=+0.38$ to $+2.15$ at $\lambda=0.3$); on the 5th percentile its risk-sensitive operators match, but do not beat, the Bayesian LCB. Baselines are decision rules over the same belief, not reimplementations of external systems\\
 Monte Carlo & Empirical error stays below the Hoeffding-derived target; exact enumeration grows with $|\Omega|$ while sampling grows far more slowly\\
 Real data, UPCL-Post & Frappe: significant gain at every noise level above $0$. DePaulMovie and LDOS-CoMoDa (far sparser per item--context cell): same direction, not significant after correction\\
 UPCL-Model & Beats the non-contextual and deterministic baselines on the synthetic structured testbed but remains below the oracle-based UPCL-Pre/Post; on Frappe it loses to the non-contextual backbone, which we report as an open limitation\\

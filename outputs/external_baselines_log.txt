@@ -1,0 +1,114 @@
+External-baseline comparison: 100 users, 12 items, M=200 true-state draws per user; metric = realized utility of the recommended item.
+
+=== lambda=0.00 ===
+         method | mean realized utility | 5th pct realized utility
+ non_contextual | 2.426 +/- 0.750       | 0.757 +/- 0.632
+  deterministic | 3.204 +/- 0.543       | 0.876 +/- 0.794
+       thompson | 2.959 +/- 0.324       | 0.440 +/- 0.349
+   credible_set | 3.444 +/- 0.469       | 1.639 +/- 0.908
+      bayes_lcb | 3.547 +/- 0.381       | 1.691 +/- 0.816
+        upcl_eu | 3.590 +/- 0.350       | 1.483 +/- 0.928
+      upcl_cvar | 3.497 +/- 0.416       | 1.711 +/- 0.823
+    upcl_maxmin | 3.116 +/- 0.540       | 1.629 +/- 0.597
+   upcl_hurwicz | 3.119 +/- 0.587       | 1.548 +/- 0.663
+       upcl_dro | 3.526 +/- 0.397       | 1.741 +/- 0.782
+  [mean] upcl_eu vs non_contextual: d=+1.424, p=1.07e-25, Holm=yes
+  [mean] upcl_eu vs deterministic: d=+0.848, p=2.18e-13, Holm=yes
+  [mean] upcl_eu vs thompson: d=+2.185, p=1.18e-39, Holm=yes
+  [mean] upcl_eu vs credible_set: d=+0.559, p=2.01e-07, Holm=yes
+  [mean] upcl_eu vs bayes_lcb: d=+0.369, p=0.000371, Holm=yes
+  [p5] upcl_cvar vs non_contextual: d=+1.014, p=5.31e-17, Holm=yes
+  [p5] upcl_cvar vs deterministic: d=+0.899, p=1.74e-14, Holm=yes
+  [p5] upcl_cvar vs thompson: d=+1.509, p=2.09e-27, Holm=yes
+  [p5] upcl_cvar vs credible_set: d=+0.155, p=0.125, Holm=no
+  [p5] upcl_cvar vs bayes_lcb: d=+0.064, p=0.524, Holm=no
+  [p5] upcl_maxmin vs non_contextual: d=+1.116, p=3.33e-19, Holm=yes
+  [p5] upcl_maxmin vs deterministic: d=+0.863, p=1.07e-13, Holm=yes
+  [p5] upcl_maxmin vs thompson: d=+1.712, p=2.37e-31, Holm=yes
+  [p5] upcl_maxmin vs credible_set: d=-0.013, p=0.893, Holm=no
+  [p5] upcl_maxmin vs bayes_lcb: d=-0.097, p=0.336, Holm=no
+
+=== lambda=0.30 ===
+         method | mean realized utility | 5th pct realized utility
+ non_contextual | 2.433 +/- 0.743       | 0.782 +/- 0.656
+  deterministic | 3.216 +/- 0.530       | 0.890 +/- 0.762
+       thompson | 2.895 +/- 0.288       | 0.415 +/- 0.270
+   credible_set | 3.382 +/- 0.441       | 1.557 +/- 0.917
+      bayes_lcb | 3.506 +/- 0.381       | 1.699 +/- 0.802
+        upcl_eu | 3.573 +/- 0.358       | 1.516 +/- 0.877
+      upcl_cvar | 3.406 +/- 0.419       | 1.727 +/- 0.812
+    upcl_maxmin | 3.115 +/- 0.541       | 1.661 +/- 0.644
+   upcl_hurwicz | 3.128 +/- 0.578       | 1.587 +/- 0.714
+       upcl_dro | 3.489 +/- 0.393       | 1.731 +/- 0.782
+  [mean] upcl_eu vs non_contextual: d=+1.401, p=3.19e-25, Holm=yes
+  [mean] upcl_eu vs deterministic: d=+0.811, p=1.4e-12, Holm=yes
+  [mean] upcl_eu vs thompson: d=+2.151, p=4.26e-39, Holm=yes
+  [mean] upcl_eu vs credible_set: d=+0.559, p=2.04e-07, Holm=yes
+  [mean] upcl_eu vs bayes_lcb: d=+0.377, p=0.00028, Holm=yes
+  [p5] upcl_cvar vs non_contextual: d=+0.984, p=2.48e-16, Holm=yes
+  [p5] upcl_cvar vs deterministic: d=+0.862, p=1.1e-13, Holm=yes
+  [p5] upcl_cvar vs thompson: d=+1.565, p=1.58e-28, Holm=yes
+  [p5] upcl_cvar vs credible_set: d=+0.289, p=0.00479, Holm=yes
+  [p5] upcl_cvar vs bayes_lcb: d=+0.085, p=0.4, Holm=no
+  [p5] upcl_maxmin vs non_contextual: d=+1.077, p=2.33e-18, Holm=yes
+  [p5] upcl_maxmin vs deterministic: d=+0.874, p=6.15e-14, Holm=yes
+  [p5] upcl_maxmin vs thompson: d=+1.831, p=1.48e-33, Holm=yes
+  [p5] upcl_maxmin vs credible_set: d=+0.138, p=0.172, Holm=no
+  [p5] upcl_maxmin vs bayes_lcb: d=-0.068, p=0.499, Holm=no
+
+=== lambda=0.50 ===
+         method | mean realized utility | 5th pct realized utility
+ non_contextual | 2.427 +/- 0.749       | 0.739 +/- 0.608
+  deterministic | 3.205 +/- 0.563       | 0.960 +/- 0.822
+       thompson | 2.815 +/- 0.283       | 0.398 +/- 0.264
+   credible_set | 3.349 +/- 0.482       | 1.475 +/- 0.891
+      bayes_lcb | 3.443 +/- 0.403       | 1.638 +/- 0.793
+        upcl_eu | 3.518 +/- 0.391       | 1.565 +/- 0.921
+      upcl_cvar | 3.342 +/- 0.429       | 1.697 +/- 0.772
+    upcl_maxmin | 3.105 +/- 0.537       | 1.631 +/- 0.612
+   upcl_hurwicz | 3.112 +/- 0.579       | 1.573 +/- 0.675
+       upcl_dro | 3.418 +/- 0.401       | 1.669 +/- 0.773
+  [mean] upcl_eu vs non_contextual: d=+1.326, p=1.13e-23, Holm=yes
+  [mean] upcl_eu vs deterministic: d=+0.600, p=3.29e-08, Holm=yes
+  [mean] upcl_eu vs thompson: d=+1.969, p=5.22e-36, Holm=yes
+  [mean] upcl_eu vs credible_set: d=+0.474, p=7.13e-06, Holm=yes
+  [mean] upcl_eu vs bayes_lcb: d=+0.362, p=0.000468, Holm=yes
+  [p5] upcl_cvar vs non_contextual: d=+1.056, p=6.66e-18, Holm=yes
+  [p5] upcl_cvar vs deterministic: d=+0.762, p=1.53e-11, Holm=yes
+  [p5] upcl_cvar vs thompson: d=+1.611, p=2.05e-29, Holm=yes
+  [p5] upcl_cvar vs credible_set: d=+0.327, p=0.00148, Holm=yes
+  [p5] upcl_cvar vs bayes_lcb: d=+0.165, p=0.102, Holm=no
+  [p5] upcl_maxmin vs non_contextual: d=+1.159, p=3.86e-20, Holm=yes
+  [p5] upcl_maxmin vs deterministic: d=+0.755, p=2.19e-11, Holm=yes
+  [p5] upcl_maxmin vs thompson: d=+1.895, p=1.03e-34, Holm=yes
+  [p5] upcl_maxmin vs credible_set: d=+0.208, p=0.0405, Holm=no
+  [p5] upcl_maxmin vs bayes_lcb: d=-0.012, p=0.905, Holm=no
+
+=== lambda=1.00 ===
+         method | mean realized utility | 5th pct realized utility
+ non_contextual | 2.416 +/- 0.729       | 0.704 +/- 0.570
+  deterministic | 3.144 +/- 0.630       | 0.894 +/- 0.856
+       thompson | 2.741 +/- 0.265       | 0.394 +/- 0.243
+   credible_set | 3.391 +/- 0.472       | 1.471 +/- 0.957
+      bayes_lcb | 3.240 +/- 0.525       | 1.559 +/- 0.837
+        upcl_eu | 3.391 +/- 0.472       | 1.471 +/- 0.957
+      upcl_cvar | 3.218 +/- 0.541       | 1.571 +/- 0.840
+    upcl_maxmin | 3.122 +/- 0.550       | 1.666 +/- 0.644
+   upcl_hurwicz | 3.122 +/- 0.589       | 1.567 +/- 0.686
+       upcl_dro | 3.248 +/- 0.494       | 1.626 +/- 0.777
+  [mean] upcl_eu vs non_contextual: d=+1.074, p=2.64e-18, Holm=yes
+  [mean] upcl_eu vs deterministic: d=+0.380, p=0.000251, Holm=yes
+  [mean] upcl_eu vs thompson: d=+1.409, p=2.15e-25, Holm=yes
+  [mean] upcl_eu vs credible_set: d=+0.000, p=nan, Holm=no
+  [mean] upcl_eu vs bayes_lcb: d=+0.367, p=0.000395, Holm=yes
+  [p5] upcl_cvar vs non_contextual: d=+0.879, p=4.7e-14, Holm=yes
+  [p5] upcl_cvar vs deterministic: d=+0.735, p=5.67e-11, Holm=yes
+  [p5] upcl_cvar vs thompson: d=+1.395, p=4.14e-25, Holm=yes
+  [p5] upcl_cvar vs credible_set: d=+0.171, p=0.0904, Holm=no
+  [p5] upcl_cvar vs bayes_lcb: d=+0.042, p=0.677, Holm=no
+  [p5] upcl_maxmin vs non_contextual: d=+1.211, p=3.02e-21, Holm=yes
+  [p5] upcl_maxmin vs deterministic: d=+0.927, p=4.25e-15, Holm=yes
+  [p5] upcl_maxmin vs thompson: d=+1.922, p=3.48e-35, Holm=yes
+  [p5] upcl_maxmin vs credible_set: d=+0.278, p=0.00658, Holm=yes
+  [p5] upcl_maxmin vs bayes_lcb: d=+0.234, p=0.0211, Holm=no
+
