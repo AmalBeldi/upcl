@@ -41,14 +41,14 @@ experiments/
   synthetic_benchmark.py            Noise-robustness benchmark + significance tests
                                      (structural demo, smaller population than the paper)
   full_evaluation.py                RQ1-RQ3 and RQ5-RQ6 on the exact 100-user/12-item
-                                     synthetic testbed used for Table 1 and Section 8
+                                     synthetic testbed used for Tables 2-3 and Section 8
   external_baselines.py             UPCL vs. Thompson-style / credible-set / Bayesian-LCB decision
                                      rules on realized utility (Appendix B.1.11)
   rigor_and_baseline.py             Paired Cohen's d / Holm-Bonferroni table for RQ1/RQ2
                                      (imports full_evaluation.py's population/scores)
   upcl_model_evaluation.py          UPCL-Model on the structured synthetic testbed
                                      (Appendix B.1.3)
-  scalability_analysis.py           Monte Carlo convergence, Corollary 5 check
+  scalability_analysis.py           Monte Carlo convergence, Corollary 6.8 check
                                      (structural demo; full_evaluation.py has the
                                      exact RQ5/RQ6 numbers reported in the paper)
   rq4_full_sweep.py                 RQ4 risk-sensitive aggregation, multi-seed
@@ -80,17 +80,17 @@ run_tests.py                  Dependency-free fallback runner (see below)
 | TID semantics (4.5) | `upcl.context._tid_worlds` |
 | BID semantics (4.5) | `upcl.context._bid_worlds` |
 | Prop. 3 / Prop. 4 (TID/BID normalization) | `tests/test_context.py` |
-| Thm. 1 / Thm. 3 (probabilistic consistency) | `tests/test_context.py` (sum-to-one checks) |
+| Thm. 6.2 (probabilistic consistency) | `tests/test_context.py` (sum-to-one checks) |
 | Def. 8-10, Γ_θ, Ψ | `upcl/aggregation.py`, `upcl/decision.py` |
 | Section 5.1-5.3 (UPCL-Pre/Model/Post) | `upcl/instantiations.py` |
 | Running example (3.1, 4.4, 5.1, 5.3) | `experiments/example_alice.py` |
-| Thm. 2 (reduction to deterministic CARS) | `tests/test_instantiations.py::test_theorem2_reduction_to_deterministic` |
-| Def. 11, Thm. 4 (Monte Carlo, convergence) | `upcl/monte_carlo.py`, `tests/test_monte_carlo.py` |
-| Thm. 5, Cor. 5 (Hoeffding bound, sample size) | `upcl/monte_carlo.py`, `experiments/scalability_analysis.py` |
-| Section 7.2 (noise injection) | `upcl/noise.py` |
-| Section 7.3 (significance testing) | `upcl/stats.py` |
-| Section 7.1 (dataset loading) | `upcl/datasets/loaders.py` |
-| RQ1-RQ3, RQ5-RQ6 (Table 1, Section 8) | `experiments/full_evaluation.py` |
+| Thm. 6.1 (reduction to deterministic CARS) | `tests/test_instantiations.py::test_theorem2_reduction_to_deterministic` |
+| Thm. 6.6 (Monte Carlo, convergence) | `upcl/monte_carlo.py`, `tests/test_monte_carlo.py` |
+| Thm. 6.7, Cor. 6.8 (Hoeffding bound, sample size) | `upcl/monte_carlo.py`, `experiments/scalability_analysis.py` |
+| Section 7 (noise injection) | `upcl/noise.py` |
+| Section 7 (significance testing) | `upcl/stats.py` |
+| Section 7 (dataset loading) | `upcl/datasets/loaders.py` |
+| RQ1-RQ3, RQ5-RQ6 (Tables 2-3, Section 8) | `experiments/full_evaluation.py` |
 | RQ1/RQ2 statistical rigor table | `experiments/rigor_and_baseline.py` |
 | Comparison with decision-rule baselines (Appendix B.1.11) | `experiments/external_baselines.py` |
 | UPCL-Model, synthetic structured testbed | `experiments/upcl_model_evaluation.py` |
@@ -121,7 +121,7 @@ python run_tests.py
 # Reproduce the paper's worked example exactly
 python experiments/example_alice.py
 
-# RQ1-RQ3 and RQ5-RQ6 on the exact synthetic testbed behind Table 1 (main paper)
+# RQ1-RQ3 and RQ5-RQ6 on the exact synthetic testbed behind Tables 2-3 (main paper)
 python experiments/full_evaluation.py
 
 # Statistical rigor table (Cohen's d / Holm-Bonferroni) for RQ1/RQ2
@@ -138,7 +138,7 @@ python experiments/synthetic_benchmark.py --n-users 50 --n-items 20
 python experiments/scalability_analysis.py --k-vars 6 --domain-size 4
 ```
 
-## Real-dataset results (Section 7.4 / 8 / Appendix B.1)
+## Real-dataset results (Section 8 / Appendix B.1)
 
 This repository does not redistribute any dataset (`data/*.csv` is
 git-ignored). The frozen logs in `outputs/` let every reported number be
@@ -148,7 +148,7 @@ from scratch given the raw benchmark.
 1. Obtain the raw benchmark from its official source: DePaulMovie
    (Zheng, Burke & Mobasher, 2014), Frappe-x1 (Baltrunas et al., 2015),
    or LDOS-CoMoDa (Odić et al., 2013 -- requires requesting access from
-   its maintainers at the University of Ljubljana).
+   its maintainers).
 2. Convert it to the tidy `(user_id, item_id, rating, <context columns>)`
    schema with `experiments/prepare_real_dataset.py` (see its docstring
    for the exact flags per benchmark).
