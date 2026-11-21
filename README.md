@@ -56,6 +56,7 @@ experiments/
   prepare_real_dataset.py           Tidy-CSV preparation for any real CARS benchmark
   real_dataset_multiseed.py         UPCL-Post vs. deterministic, exact per-world pipeline
                                      (DePaulMovie, LDOS-CoMoDa)
+  frappe_f0_reference.py            Non-contextual f0 reference (MRR) on Frappe, same seeds/splits
   real_dataset_multiseed_fast.py    Same protocol, closed-form vectorization for
                                      single-context-variable benchmarks at scale (Frappe)
   frappe_model_evaluation.py        UPCL-Model (jointly-trained contextual bias) on Frappe
@@ -96,6 +97,7 @@ run_tests.py                  Dependency-free fallback runner (see below)
 | RQ4 -- risk-sensitive aggregation | `experiments/rq4_full_sweep.py`, `experiments/rq4_hyperparam_sensitivity.py` |
 | Real-dataset results -- DePaulMovie, LDOS-CoMoDa | `experiments/real_dataset_multiseed.py` |
 | Real-dataset results -- Frappe (UPCL-Post) | `experiments/real_dataset_multiseed_fast.py` |
+| Frappe non-contextual f0 reference | `experiments/frappe_f0_reference.py` |
 | Real-dataset results -- Frappe (UPCL-Model) | `experiments/frappe_model_evaluation.py` |
 | MF capacity / shrinkage sensitivity ablation | `experiments/mf_shrink_ablation.py` |
 
