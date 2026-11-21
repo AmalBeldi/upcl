@@ -57,7 +57,7 @@ experiments/
   real_dataset_multiseed.py         UPCL-Post vs. deterministic, exact per-world pipeline
                                      (DePaulMovie, LDOS-CoMoDa)
   frappe_f0_reference.py            Non-contextual f0 reference (MRR) on Frappe, same seeds/splits
-  f0_reference_multictx.py          Same f0 reference for multi-context datasets (DePaulMovie)
+  f0_reference_multictx.py          Same f0 reference for multi-context datasets (DePaulMovie, LDOS-CoMoDa)
   extra_seeds.py                    RQ2 (20 belief populations) and RQ4 (20 seeds) replication
   make_figures.py                   Regenerates the RQ2 and RQ6 figures
   real_dataset_multiseed_fast.py    Same protocol, closed-form vectorization for
@@ -102,6 +102,7 @@ run_tests.py                  Dependency-free fallback runner (see below)
 | Real-dataset results -- Frappe (UPCL-Post) | `experiments/real_dataset_multiseed_fast.py` |
 | Frappe non-contextual f0 reference | `experiments/frappe_f0_reference.py` |
 | DePaulMovie non-contextual f0 reference | `experiments/f0_reference_multictx.py` |
+| LDOS-CoMoDa non-contextual f0 reference | `experiments/f0_reference_multictx.py` (`outputs/ldos_comoda_f0_reference_log.json`) |
 | RQ2/RQ4 replication with 20 seeds (Appendix B.1.12) | `experiments/extra_seeds.py` |
 | Real-dataset results -- Frappe (UPCL-Model) | `experiments/frappe_model_evaluation.py` |
 | MF capacity / shrinkage sensitivity ablation | `experiments/mf_shrink_ablation.py` |

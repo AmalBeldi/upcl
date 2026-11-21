@@ -129,6 +129,7 @@ DePaulMovie, LDOS-CoMoDa (UPCL-Post) & \code{real\_dataset\_multiseed.py} & \cod
 Frappe (UPCL-Post) & \code{real\_dataset\_multiseed\_fast.py} & \code{frappe\_multiseed\_log.json}\\
 Frappe, non-contextual $f_0$ reference & \code{frappe\_f0\_reference.py} & \code{frappe\_f0\_reference\_log.json}\\
 DePaulMovie, non-contextual $f_0$ reference & \code{f0\_reference\_multictx.py} & \code{depaulmovie\_f0\_reference\_log.json}\\
+LDOS-CoMoDa, non-contextual $f_0$ reference & \code{f0\_reference\_multictx.py} & \code{ldos\_comoda\_f0\_reference\_log.json}\\
 RQ2/RQ4 replication, 20 seeds & \code{extra\_seeds.py} & \code{extra\_seeds\_log.txt}\\
 Frappe (UPCL-Model) & \code{frappe\_model\_evaluation.py} & \code{frappe\_model\_evaluation\_log.json}\\
 MF capacity / shrinkage ablation & \code{mf\_shrink\_ablation.py} & \code{mf\_shrink\_k\_ablation.json}\\
@@ -154,7 +155,7 @@ Synthetic, robustness & UPCL-Pre beats the deterministic baseline at every noise
 Synthetic, risk--return (RQ4) & Expected Utility has the best mean and the worst 5th-percentile outcome; Maxmin, CVaR and DRO trade mean for a better worst case; the trade-off is continuous in the Hurwicz coefficient. Against a Bayesian-LCB baseline the picture is mixed: parity, not dominance\\
 Synthetic, vs.\ decision-rule baselines (realized utility) & UPCL with Expected Utility is significantly ahead on mean utility of Thompson-style, credible-set and Bayesian-LCB rules ($d=+0.38$ to $+2.15$ at $\lambda=0.3$); on the 5th percentile its risk-sensitive operators match, but do not beat, the Bayesian LCB. Baselines are decision rules over the same belief, not reimplementations of external systems\\
 Monte Carlo & Empirical error stays below the Hoeffding-derived target; exact enumeration grows with $|\Omega|$ while sampling grows far more slowly\\
-Real data, UPCL-Post & Frappe: significant gain over the mode-collapsed baseline at every noise level above $0$, but not over the non-contextual $f_0$ even at $\lambda=0$ ($d=+0.25$, $p=0.27$). DePaulMovie and LDOS-CoMoDa (far sparser per item--context cell): same direction, not significant after correction\\
+Real data, UPCL-Post & Frappe: significant gain over the mode-collapsed baseline at every noise level above $0$, but not over the non-contextual $f_0$ even at $\lambda=0$ ($d=+0.25$, $p=0.27$). DePaulMovie and LDOS-CoMoDa (far sparser per item--context cell): not significant after correction; on LDOS-CoMoDa the context term is significantly below $f_0$ ($d=-1.35$, $p=0.002$)\\
 UPCL-Model & Beats the non-contextual and deterministic baselines on the synthetic structured testbed but remains below the oracle-based UPCL-Pre/Post; on Frappe it loses to the non-contextual backbone, which we report as an open limitation\\
 \bottomrule
 \end{tabular}
