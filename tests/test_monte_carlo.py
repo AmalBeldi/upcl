@@ -58,3 +58,21 @@ def test_monte_carlo_reproducible_with_seed():
     est1 = monte_carlo_expected_utility(scores_by_world, space, 500, np.random.default_rng(7))
     est2 = monte_carlo_expected_utility(scores_by_world, space, 500, np.random.default_rng(7))
     assert math.isclose(est1, est2)
+
+
+def test_independent_sampler_matches_exact_expected_utility():
+    """The enumeration-free BID sampler must agree with exact EU."""
+    import numpy as np
+    from upcl.aggregation import expected_utility
+    from upcl.context import ContextualVariable, ProbabilisticContextInstance, phi
+    from upcl.monte_carlo import monte_carlo_expected_utility_independent
+
+    variables = [
+        ContextualVariable("a", {"x": 0.7, "y": 0.3}),
+        ContextualVariable("b", {"p": 0.2, "q": 0.5, "r": 0.3}),
+    ]
+    score = lambda w: 1.0 + 2.0 * (dict(w)["a"] == "x") + (dict(w)["b"] == "q")
+    space = phi(ProbabilisticContextInstance(categorical_variables=variables))
+    exact = expected_utility([score(w) for w in space.worlds], space.probabilities)
+    est = monte_carlo_expected_utility_independent(variables, score, 40000, np.random.default_rng(0))
+    assert abs(est - exact) < 0.03

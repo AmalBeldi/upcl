@@ -15,7 +15,7 @@ from typing import Sequence
 
 import numpy as np
 
-from .context import ProbabilisticContextSpace, World
+from .context import ContextualVariable, ProbabilisticContextSpace, World
 
 
 def sample_worlds(space: ProbabilisticContextSpace, n_samples: int, rng: np.random.Generator) -> Sequence[World]:
@@ -39,6 +39,37 @@ def monte_carlo_expected_utility(
     idx = rng.choice(len(space.worlds), size=n_samples, p=space.probabilities)
     scores = np.asarray(scores_by_world, dtype=float)
     return float(np.mean(scores[idx]))
+
+
+def monte_carlo_expected_utility_independent(
+    variables: Sequence["ContextualVariable"],
+    score_fn,
+    n_samples: int,
+    rng: np.random.Generator = None,
+) -> float:
+    """Monte Carlo estimate of Expected Utility under BID semantics that never
+    enumerates the world space.
+
+    Each of the K independent blocks is sampled from its own marginal, so one
+    world costs O(K) and the whole estimate O(N*K) calls/operations,
+    independent of |Omega| = prod_k |domain_k|. `score_fn(world)` receives a
+    world in the same ((name, value), ...) form produced by `phi`.
+    """
+    if rng is None:
+        rng = np.random.default_rng()
+    names = [v.name for v in variables]
+    columns = []
+    for v in variables:
+        values = list(v.distribution.keys())
+        probs = np.asarray([v.distribution[x] for x in values], dtype=float)
+        probs = probs / probs.sum()
+        idx = rng.choice(len(values), size=n_samples, p=probs)
+        columns.append([values[i] for i in idx])
+    total = 0.0
+    for j in range(n_samples):
+        world = tuple((names[k], columns[k][j]) for k in range(len(names)))
+        total += float(score_fn(world))
+    return total / n_samples
 
 
 def hoeffding_bound(n_samples: int, a: float, b: float, epsilon: float) -> float:

@@ -20,14 +20,12 @@ lambda=1.00: UPCL-Pre=0.9514, Deterministic=0.9243, d=+0.338, p=0.00104
 
 === RQ5: Monte Carlo approximation quality (K=6, domain size 4) ===
 |Omega|=4096, required N for eps=0.05, delta=0.05: 18445
-N=18445: mean |error| over 20 draws = 0.0090 (Hoeffding bound=0.0500), true=2.5356
-N=36890: mean |error| over 20 draws = 0.0062 (Hoeffding bound=0.0012), true=2.5356
+N=18445: mean |error| over 20 draws = 0.0090 (Hoeffding failure-probability bound at eps=0.05: 0.0500), true=2.5356
+N=36890: mean |error| over 20 draws = 0.0062 (Hoeffding failure-probability bound at eps=0.05: 0.0012), true=2.5356
 
-=== RQ6: scalability, exact enumeration vs. Monte Carlo (N=2000) ===
-K= 2 (|Omega|=       16): exact=0.10 ms, MC(N=2000)=0.09 ms
-K= 4 (|Omega|=      256): exact=1.06 ms, MC(N=2000)=0.21 ms
-K= 6 (|Omega|=     4096): exact=20.45 ms, MC(N=2000)=0.58 ms
-K= 8 (|Omega|=    65536): exact=445.26 ms, MC(N=2000)=3.70 ms
-K=10 (|Omega|=  1048576): exact=9318.42 ms, MC(N=2000)=54.56 ms
-
-Log written to /home/claude/upcl/outputs/full_evaluation_log.txt
+=== RQ6: scalability, exact enumeration vs. Monte Carlo (N=2000, no world enumeration) ===
+K= 2 (|Omega|=       16): exact=0.10 ms, MC(N=2000)=4.48 ms
+K= 4 (|Omega|=      256): exact=0.96 ms, MC(N=2000)=6.04 ms
+K= 6 (|Omega|=     4096): exact=17.38 ms, MC(N=2000)=7.00 ms
+K= 8 (|Omega|=    65536): exact=355.96 ms, MC(N=2000)=8.55 ms
+K=10 (|Omega|=  1048576): exact=7332.95 ms, MC(N=2000)=10.52 ms

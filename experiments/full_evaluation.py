@@ -58,7 +58,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from upcl.aggregation import expected_utility
 from upcl.context import ContextualVariable, ProbabilisticContextInstance, phi
 from upcl.instantiations import upcl_post, upcl_pre
-from upcl.monte_carlo import hoeffding_bound, monte_carlo_expected_utility, required_sample_size
+from upcl.monte_carlo import (
+    hoeffding_bound,
+    monte_carlo_expected_utility,
+    monte_carlo_expected_utility_independent,
+    required_sample_size,
+)
 from upcl.noise import collapse_to_mode, inject_noise
 from upcl.recommenders.toy import HashedContextualRecommender
 from upcl.stats import cohens_d_paired, paired_ttest
@@ -248,9 +253,9 @@ def rq5_rq6(log):
             est = monte_carlo_expected_utility(world_scores, space, n, mc_rng)
             errors.append(abs(est - true_s))
         log(f"N={n}: mean |error| over 20 draws = {np.mean(errors):.4f} "
-            f"(Hoeffding bound={hoeffding_bound(n, 0.0, 5.0, 0.05):.4f}), true={true_s:.4f}")
+            f"(Hoeffding failure-probability bound at eps=0.05: {hoeffding_bound(n, 0.0, 5.0, 0.05):.4f}), true={true_s:.4f}")
 
-    log("\n=== RQ6: scalability, exact enumeration vs. Monte Carlo (N=2000) ===")
+    log("\n=== RQ6: scalability, exact enumeration vs. Monte Carlo (N=2000, no world enumeration) ===")
     for k_vars in (2, 4, 6, 8, 10):
         rng = np.random.default_rng(7)
         variables = []
@@ -267,9 +272,17 @@ def rq5_rq6(log):
             _ = expected_utility(world_scores, space.probabilities)
             exact_times.append(time.perf_counter() - t0)
 
+            # Monte Carlo, timed end to end and without enumerating the world
+            # space: each block is sampled from its own marginal and the
+            # recommender is called only on the N sampled worlds.
             t0 = time.perf_counter()
             mc_rng = np.random.default_rng(0)
-            _ = monte_carlo_expected_utility(world_scores, space, 2000, mc_rng)
+            _ = monte_carlo_expected_utility_independent(
+                instance.categorical_variables,
+                lambda w: RECOMMENDER.worldwise("u_rq6", "i_rq6", w),
+                2000,
+                mc_rng,
+            )
             mc_times.append(time.perf_counter() - t0)
 
         log(f"K={k_vars:>2} (|Omega|={domain**k_vars:>9}): "
