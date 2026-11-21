@@ -129,6 +129,7 @@ def run(data_path, context_col, granularity="item", n_seeds=20,
     key_col = "i_idx" if granularity == "item" else "u_idx"
 
     per_lambda = {lam: {"upcl_post": [], "deterministic": []} for lam in lambdas}
+    f0_mrr = []  # non-contextual reference: base MF score f0 only, no context term
 
     for seed in range(n_seeds):
         shuffled = df.sample(frac=1.0, random_state=seed).reset_index(drop=True)
@@ -155,6 +156,12 @@ def run(data_path, context_col, granularity="item", n_seeds=20,
         test_i = test_df["i_idx"].to_numpy()
         test_w = test_df["w_idx"].to_numpy()
         det_rng = np.random.default_rng(2000 + seed)
+
+        f0_ranks = [
+            1.0 / (int((f0_matrix[u] > f0_matrix[u, i]).sum()) + 1)
+            for u, i in zip(test_u, test_i)
+        ]
+        f0_mrr.append(float(np.mean(f0_ranks)))
 
         for lam in lambdas:
             upcl_ranks, det_ranks = [], []
@@ -215,6 +222,9 @@ def run(data_path, context_col, granularity="item", n_seeds=20,
     for lam, sig in zip(lam_order, holm_bonferroni(pvals)):
         results[lam]["holm_significant"] = bool(sig)
 
+    results["non_contextual_f0"] = {"mean": float(np.mean(f0_mrr)),
+                                    "std": float(np.std(f0_mrr, ddof=1)) if len(f0_mrr) > 1 else 0.0,
+                                    "per_seed": f0_mrr}
     meta = {"n_users": n_users, "n_items": n_items, "n_worlds": n_worlds,
             "n_rows": len(df), "context_col": context_col, "granularity": granularity}
     return results, meta
@@ -245,6 +255,9 @@ def main():
     print(f"\nWrote {args.out}")
     print(meta)
     for lam, r in results.items():
+        if lam == "non_contextual_f0":
+            print(f"non-contextual f0 (same MF, no context term): MRR={r['mean']:.4f}+-{r['std']:.4f}")
+            continue
         print(
             f"lambda={lam}: UPCL-Post={r['upcl_post_mean']:.4f}+-{r['upcl_post_std']:.4f}, "
             f"Det={r['deterministic_mean']:.4f}+-{r['deterministic_std']:.4f}, "
