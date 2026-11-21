@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 L=[0,.25,.5,.75,1]; up=[1.0,.9977,.9886,.9735,.9514]; de=[.9398,.9398,.9398,.9398,.9243]
 fig,ax=plt.subplots(figsize=(5.4,3.3),dpi=200)
 ax.plot(L,up,"o-",label="UPCL-Pre"); ax.plot(L,de,"s--",label="Deterministic")
-ax.set_xlabel("State-uncertainty intensity $\\lambda$"); ax.set_ylabel("NDCG@5 (mean over 3 seeds)")
+ax.set_xlabel("State-uncertainty intensity $\\lambda$"); ax.set_ylabel("NDCG@5")
 ax.set_xticks(L); ax.grid(alpha=.3); ax.legend(frameon=False); fig.tight_layout(); fig.savefig("rq2_robustness.png")
 K=[2,4,6,8,10]; ex=[0.10,0.96,17.38,355.96,7332.95]; mc=[4.48,6.04,7.00,8.55,10.52]
 fig,ax=plt.subplots(figsize=(5.4,3.4),dpi=200)
